@@ -29,8 +29,7 @@ namespace AOC23
             
             if (lhs.Count != rhs.Count)
             {
-                Console.WriteLine("Error: lhs and rhs are not the same length");
-                return;
+                throw new ArgumentException("After parse, LHS and RHS list lengths are not equal!");
             }
 
             this.rhs = rhs;
