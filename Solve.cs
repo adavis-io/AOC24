@@ -20,7 +20,8 @@ class AOC
 
         //days.Add(new AOC24.Day1(test));
         //days.Add(new AOC24.Day2(test));
-        days.Add(new AOC24.Day3(test));
+        //days.Add(new AOC24.Day3(test));
+        days.Add(new AOC24.Day4(test));
 
         foreach (var day in days)
         {
