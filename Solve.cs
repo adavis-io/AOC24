@@ -5,7 +5,7 @@ class AOC
 {
     static void Main(string[] args)
     {
-        List<AOC23.Day> days = new();
+        List<AOC24.Day> days = new();
 
         bool test = args.Contains("--test");
 
@@ -18,8 +18,9 @@ class AOC
             Console.WriteLine("Running with full data"); 
         }
 
-        days.Add(new AOC23.Day1(test));
-        
+        //days.Add(new AOC24.Day1(test));
+        days.Add(new AOC24.Day2(test));
+
         foreach (var day in days)
         {
 

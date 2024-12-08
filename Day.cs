@@ -1,6 +1,6 @@
 ﻿
 
-namespace AOC23
+namespace AOC24
 {
     public class Day
     {

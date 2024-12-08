@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 
-namespace AOC23
+namespace AOC24
 {
     public class DayN(bool test) : Day(1, test)
     {
