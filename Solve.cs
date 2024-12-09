@@ -22,7 +22,9 @@ class AOC
         //days.Add(new AOC24.Day2(test));
         //days.Add(new AOC24.Day3(test));
         //days.Add(new AOC24.Day4(test));
-        days.Add(new AOC24.Day5(test));
+        //days.Add(new AOC24.Day5(test));
+        days.Add(new AOC24.Day6(test));
+
         foreach (var day in days)
         {
 
