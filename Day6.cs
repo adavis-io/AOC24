@@ -39,6 +39,7 @@ namespace AOC24
                 value.CopyTo(this._guard_pos, 0);
             }
         }
+        public int[] Guard_start { get => _guard_start; }
         public Direction Guard_facing { get; set; }
         public List<Tuple<Direction, int[]>> Turns { get { return new List<Tuple<Direction, int[]>>(_turns); } }
 
@@ -47,7 +48,8 @@ namespace AOC24
         private int[,] _map;
 
         private int[] _guard_pos = [0, 0];
-        
+        private int[] _guard_start = [0, 0];
+
         private List<Tuple<Direction, int[]>> _turns = new List<Tuple<Direction, int[]>>();
 
         public Map(Map m)
@@ -56,6 +58,7 @@ namespace AOC24
             this._y_size = m.MapState.GetLength(1);
             this._map = m.MapState;
             this._guard_pos = m.Guard_pos;
+            this._guard_start = m.Guard_start;
             this.Guard_facing = m.Guard_facing;
             this._turns = m.Turns;
         }
@@ -71,6 +74,7 @@ namespace AOC24
                     if (lines[j][i] == '^')
                     {
                         this._guard_pos = [i, j];
+                        this._guard_start = [i, j];
                         this._map[i, j] = 1;
                     }
                     else if (lines[j][i] == '#')
@@ -97,6 +101,13 @@ namespace AOC24
                     }
                 }
             }
+        }
+        public void reset()
+        {
+            this._guard_pos = this._guard_start;
+            this.Guard_facing = Direction.Up;
+            this.clear_map();
+            this._turns.Clear();
         }
         public bool in_bounds(int x, int y)
         {
@@ -213,7 +224,7 @@ namespace AOC24
             return count;
         }
 
-        public int loop_count()
+        public int loop_count_old()
         {
             int count = 0;
             
@@ -292,6 +303,32 @@ namespace AOC24
 
             return count;
 
+        }
+        public int loop_count()
+        {
+            Map working_map;
+            int count = 0;
+            for (int i = 0; i < this._x_size; i++)
+            {
+                for (int j = 0; j < this._y_size; j++)
+                {
+
+                    working_map = new Map(this);
+                    working_map.reset();
+                    working_map.add_obstacle(i, j);
+
+                    var move_result = 0;
+                    while (move_result >= 0)
+                    {
+                        move_result = working_map.move_guard();
+                    }
+                    if (move_result == -2)
+                    {
+                        count += 1;
+                    }
+                }
+            }
+                return count;
         }
 
 
